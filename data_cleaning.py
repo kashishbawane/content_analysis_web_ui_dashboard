@@ -1,12 +1,9 @@
 import pandas as pd
 
-# If you kept Excel
-df = pd.read_excel("dataset.xlsx")
+# 1. Load dataset (make sure this file exists in your repo!)
+df = pd.read_excel("dataset.xlsx")   # or pd.read_csv("dataset.csv")
 
-# If you saved it as CSV
-# df = pd.read_csv("dataset.csv")
-
-# Cleaning steps
+# 2. Now do cleaning
 df['Release_Year'] = df['Release_Year'].fillna(0)
 df['Certificate'] = df['Certificate'].replace({
     'Not Rated': 'Unrated',
