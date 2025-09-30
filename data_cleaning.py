@@ -1,5 +1,9 @@
+import pandas as pd
 
+# Load dataset first
+df = pd.read_csv("your_dataset.csv")   # or pd.read_excel("dataset.xlsx")
 
+# Now clean it
 df['Release_Year'] = df['Release_Year'].fillna(0)
 df['Certificate'] = df['Certificate'].replace({
     'Not Rated':'Unrated',
@@ -16,4 +20,3 @@ df['Duration'] = df['Duration'].fillna(0)
 df['Genre'] = df['Genre'].fillna('Not Available')
 df['Director'] = df['Director'].fillna('Not Available')
 df['Cast'] = df['Cast'].fillna('Not Available')
-
