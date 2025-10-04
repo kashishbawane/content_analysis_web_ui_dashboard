@@ -1,7 +1,6 @@
+streamlit
 pandas
 plotly
-dash
-dash_bootstrap_components
-dash_bootstrap_templates
-streamlit
 openpyxl
+numpy
+matplotlib
