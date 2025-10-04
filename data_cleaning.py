@@ -1,22 +1,15 @@
+# data_cleaning.py
 import pandas as pd
 
-# 1. Load dataset (make sure this file exists in your repo!)
-df = pd.read_excel("dataset.xlsx")   # or pd.read_csv("dataset.csv")
+def load_data():
+    try:
+        # Try Excel
+        df = pd.read_excel("dataset.xlsx", engine="openpyxl")
+    except Exception:
+        # Fallback to CSV
+        df = pd.read_csv("ottdata2.csv")
 
-# 2. Now do cleaning
-df['Release_Year'] = df['Release_Year'].fillna(0)
-df['Certificate'] = df['Certificate'].replace({
-    'Not Rated': 'Unrated',
-    'Passed': 'Approved',
-    '16': '16+',
-    '13': '13+',
-    '18': '18+',
-    'All': 'UA',
-    '15': '15+',
-    '12': '12+',
-    'U/A': 'UA'
-})
-df['Duration'] = df['Duration'].fillna(0)
-df['Genre'] = df['Genre'].fillna('Not Available')
-df['Director'] = df['Director'].fillna('Not Available')
-df['Cast'] = df['Cast'].fillna('Not Available')
+    df.columns = df.columns.str.strip()  # Clean column names
+    return df
+
+df = load_data()
